@@ -7199,6 +7199,10 @@ MonoBehaviour:
   magazineCount: 7
   bulletTotal: 28
   bulletCurrent: 7
+  prefabBullet: {fileID: 329007387773414670, guid: 4fa44288f459b5c47b6676c7b0e4ad4d, type: 3}
+  pointSpawnBullet: {fileID: 1487197319}
+  openDoor: 1
+  isDead: 0
 --- !u!1001 &551452627
 PrefabInstance:
   m_ObjectHideFlags: 0
