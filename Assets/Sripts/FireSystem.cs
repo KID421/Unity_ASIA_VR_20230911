@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public class FireSystem : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class FireSystem : MonoBehaviour
     public GameObject prefabBullet;
     [Header("子彈生成點")]
     public Transform pointSpawnBullet;
+    [Header("開槍動畫參數")]
+    public string parFire = "觸發開槍";
+    [Header("動畫控制器")]
+    public Animator ani;
 
     public bool openDoor = true;
     public bool isDead = false;
@@ -43,7 +48,8 @@ public class FireSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Instantiate(prefabBullet);
+            ani.SetTrigger(parFire);
+            Instantiate(prefabBullet, pointSpawnBullet.position, pointSpawnBullet.rotation);
         }
     }
 }
