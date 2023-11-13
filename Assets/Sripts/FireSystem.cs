@@ -1,8 +1,8 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FireSystem : MonoBehaviour
 {
+    #region 資料
     [Header("彈匣的子彈數量"), Range(0, 10)]
     public int magazineCount = 7;
     [Header("子彈總數"), Range(20, 200)]
@@ -17,7 +17,13 @@ public class FireSystem : MonoBehaviour
     public string parFire = "觸發開槍";
     [Header("動畫控制器")]
     public Animator ani;
+    [Header("音效來源")]
+    public AudioSource aud;
+    [Header("開槍音效")]
+    public AudioClip soundFire;
+    #endregion
 
+    /* 這裡是練習的區域
     public bool openDoor = true;
     public bool isDead = false;
 
@@ -41,6 +47,7 @@ public class FireSystem : MonoBehaviour
             print("已經死亡");
         }
     }
+    */
 
     private void Update()
     {
@@ -50,6 +57,9 @@ public class FireSystem : MonoBehaviour
         {
             ani.SetTrigger(parFire);
             Instantiate(prefabBullet, pointSpawnBullet.position, pointSpawnBullet.rotation);
+
+            float volume = Random.Range(0.8f, 3.2f);
+            aud.PlayOneShot(soundFire, volume);
         }
     }
 }
