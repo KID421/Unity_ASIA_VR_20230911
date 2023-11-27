@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class EnemyAI : MonoBehaviour
     public float stopDistance = 1;
     [Header("動畫控制器")]
     public Animator ani;
+    [Header("延遲造成傷害"), Range(0, 5)]
+    public float delayDamage = 0.6f;
+    [Header("攻擊冷卻"), Range(0, 5)]
+    public float cd = 2.1f;
 
     private string parMove = "移動數值";
     private string parAttack = "觸發攻擊";
@@ -45,9 +50,24 @@ public class EnemyAI : MonoBehaviour
         // canAttack == true 簡寫 canAttack
         if (agent.velocity.magnitude == 0 && canAttack && distance < stopDistance)
         {
-            ani.SetTrigger(parAttack);
             // 不能攻擊
             canAttack = false;
+
+            StartCoroutine(Attack());
         }
+    }
+
+    private IEnumerator Attack()
+    {
+        // 播放攻擊動畫
+        ani.SetTrigger(parAttack);
+        // 等 0.4 秒
+        yield return new WaitForSeconds(delayDamage);
+        // 造成玩家傷害
+        print("<color=#f69>造成玩家傷害!</color>");
+        // 等 2.1 秒
+        yield return new WaitForSeconds(cd);
+        // 恢復可攻擊狀態
+        canAttack = true;
     }
 }
