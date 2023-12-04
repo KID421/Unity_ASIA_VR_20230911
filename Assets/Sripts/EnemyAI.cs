@@ -59,6 +59,8 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator Attack()
     {
+        // 代理器停止
+        agent.isStopped = true;
         // 播放攻擊動畫
         ani.SetTrigger(parAttack);
         // 等 0.4 秒
@@ -69,5 +71,7 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(cd);
         // 恢復可攻擊狀態
         canAttack = true;
+        // 代理器恢復
+        agent.isStopped = false;
     }
 }
