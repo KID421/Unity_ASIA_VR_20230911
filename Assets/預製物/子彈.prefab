@@ -65,6 +65,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 1319cfeb42068a446bc5d43ef1562670, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3920065523999646375}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 1319cfeb42068a446bc5d43ef1562670, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3944010785544189690}
   m_SourcePrefab: {fileID: 100100000, guid: 1319cfeb42068a446bc5d43ef1562670, type: 3}
 --- !u!1 &329007387773414670 stripped
 GameObject:
@@ -133,3 +136,15 @@ ConstantForce:
   m_RelativeForce: {x: 0, y: 0, z: 500}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
+--- !u!114 &-3944010785544189690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329007387773414670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9e8f28044724d4e94209349017da9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
