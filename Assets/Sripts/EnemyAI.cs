@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using KID;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -18,10 +19,15 @@ public class EnemyAI : MonoBehaviour
     public float delayDamage = 0.6f;
     [Header("攻擊冷卻"), Range(0, 5)]
     public float cd = 2.1f;
+    [Header("攻擊距離"), Range(0, 5)]
+    public float attackDistance = 1.5f;
+    [Header("攻擊力"), Range(0, 100)]
+    public float attack = 45;
 
     private string parMove = "移動數值";
     private string parAttack = "觸發攻擊";
     private bool canAttack = true;
+    private DamagePlayer damagePlayer;
 
     private void Awake()
     {
@@ -29,6 +35,8 @@ public class EnemyAI : MonoBehaviour
         agent.speed = moveSpeed;
         // 代理器的停止距離 = 停止距離
         agent.stoppingDistance = stopDistance;
+        // 玩家受傷 = 玩家物件.取得元件<玩家受傷>()
+        damagePlayer = player.GetComponent<DamagePlayer>();
     }
 
     private void Update()
@@ -65,8 +73,12 @@ public class EnemyAI : MonoBehaviour
         ani.SetTrigger(parAttack);
         // 等 0.4 秒
         yield return new WaitForSeconds(delayDamage);
+
+        // 如果 距離 <= 攻擊距離
         // 造成玩家傷害
-        print("<color=#f69>造成玩家傷害!</color>");
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance <= attackDistance) damagePlayer.Damage(attack);
+
         // 等 2.1 秒
         yield return new WaitForSeconds(cd);
         // 恢復可攻擊狀態

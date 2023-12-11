@@ -9,7 +9,7 @@ public class DamageBasic : MonoBehaviour
     /// 角色受傷方法
     /// </summary>
     /// <param name="damage">受到的傷害值</param>
-    public void Damage(float damage)
+    public virtual void Damage(float damage)
     {
         // 血量 遞減 傷害值
         hp -= damage;
