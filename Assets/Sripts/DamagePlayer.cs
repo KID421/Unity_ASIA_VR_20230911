@@ -28,6 +28,14 @@ namespace KID
             // 更新圖片介面
             imageHp.fillAmount = hp / hpMax;
         }
+
+        protected override void Dead()
+        {
+            base.Dead();
+            // 呼叫單例模式
+            // 類別名稱.單例模式實體資料.公開內容(public)
+            GameManager.instance.StartShowFinal("挑戰失敗");
+        }
     }
 }
 
