@@ -49,17 +49,25 @@ public class FireSystem : MonoBehaviour
     }
     */
 
+    [SerializeField, Header("是否使用 VR 設備")]
+    private bool useVR;
+
     private void Update()
     {
         // print("<color=red>更新事件</color>");
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        // 如果不使用 VR 並且按下滑鼠左鍵
+        if (!useVR && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            ani.SetTrigger(parFire);
-            Instantiate(prefabBullet, pointSpawnBullet.position, pointSpawnBullet.rotation);
-
-            float volume = Random.Range(0.8f, 3.2f);
-            aud.PlayOneShot(soundFire, volume);
+            Fire();
         }
+    }
+
+    public void Fire()
+    {
+        ani.SetTrigger(parFire);
+        Instantiate(prefabBullet, pointSpawnBullet.position, pointSpawnBullet.rotation);
+
+        float volume = Random.Range(0.8f, 3.2f);
+        aud.PlayOneShot(soundFire, volume);
     }
 }
