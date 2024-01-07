@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void Replay()
     {
-        SceneManager.LoadScene("後室");
+        SceneManager.LoadScene("後室 VR");
     }
 
     /// <summary>
